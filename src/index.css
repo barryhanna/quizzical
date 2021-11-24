@@ -1,13 +1,59 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* colors */
+  --clr-blue: #4d5b9e;
+  --clr-blue-dark: #293264;
+  --clr-blue-light: #d6dbf5;
+  --clr-white: #f5f7fb;
+
+  --clr-heading-text: var(--clr-blue-dark);
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1 {
+  font-size: 2rem;
+  font-family: 'Karla', sans-serif;
+  font-weight: bold;
+}
+
+button {
+  width: 190px;
+  height: 52px;
+  color: white;
+  background-color: var(--clr-blue);
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 15px;
+  border: none;
+}
+
+.intro {
+  height: 100%;
+  margin: auto;
+}
+
+.flow > * + * {
+  margin-top: 1rem;
 }
