@@ -1,10 +1,10 @@
 import React from 'react';
 
-const IntroPage = () => (
+const IntroPage = ({ startGame }) => (
   <div className="intro flow">
     <h1>Quizzical</h1>
     <p>Some description is needed</p>
-    <button>Start quiz</button>
+    <button onClick={startGame}>Start quiz</button>
   </div>
 );
 

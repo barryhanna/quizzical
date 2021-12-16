@@ -1,16 +1,19 @@
 import React from 'react';
 import QuestionOption from './QuestionOption';
 
-const Question = () => (
-  <div className="question">
-    <p className="question--text">How would you say goodbye in Spanish?</p>
-    <div className="question--answer-options">
-      <QuestionOption optionText={'Adios'} />
-      <QuestionOption optionText={'Hola'} />
-      <QuestionOption optionText={'Au Revoir'} />
-      <QuestionOption optionText={'Salir'} />
+const Question = ({ q: question, correct, wrong }) => {
+  const options = [correct, ...wrong];
+  return (
+    <div className="question">
+      <p className="question--text">{question}</p>
+      <div className="question--answer-options">
+        <QuestionOption optionText={correct} />
+        <QuestionOption optionText={wrong[0]} />
+        <QuestionOption optionText={wrong[1]} />
+        <QuestionOption optionText={wrong[2]} />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Question;
