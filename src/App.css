@@ -4,6 +4,7 @@
   text-align: center;
   margin: 0 auto;
   height: 100vh;
+  max-width: 80%;
 }
 
 .App-logo {

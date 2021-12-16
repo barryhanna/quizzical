@@ -99,6 +99,7 @@ button {
 
   border: 1px solid currentColor;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .question--option.selected {
