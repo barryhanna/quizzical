@@ -18,15 +18,14 @@ const Question = ({ q: question, correct, wrong }) => {
     setOptions(shuffleArray([correct, ...wrong]));
   }, []);
 
-  console.log(`Question: ${question}`);
-  console.log(`Correct: ${correct}`);
-  console.log(`Wrong: ${wrong}`);
+  // console.log(`Question: ${question}`);
+  // console.log(`Correct: ${correct}`);
+  // console.log(`Wrong: ${wrong}`);
 
   const toggleSelected = (e) => {
     e.target.classList.toggle('selected');
-    console.log(`i: ${e.target.getAttribute('data-i')}`);
-    setSelectedIndex(e.target.i);
-    console.log(selectedIndex);
+    const clickedIndex = parseInt(e.target.getAttribute('data-index'));
+    setSelectedIndex(clickedIndex);
   };
 
   return (
@@ -42,7 +41,7 @@ const Question = ({ q: question, correct, wrong }) => {
             <QuestionOption
               selected={isSelected}
               optionText={opt}
-              data-i={i}
+              index={i}
               onClick={toggleSelected}
             />
           );
