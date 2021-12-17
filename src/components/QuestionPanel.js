@@ -3,6 +3,8 @@ import Question from './Question';
 
 const QuestionPanel = () => {
   const [questions, setQuestions] = useState([]);
+  const [score, setScore] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
 
   const getQuestions = async () => {
     const data = await fetch(
@@ -22,6 +24,7 @@ const QuestionPanel = () => {
       q,
       wrong,
       correct,
+      playerAnswerIndex: -1,
     };
   };
 
@@ -61,6 +64,23 @@ const QuestionPanel = () => {
     });
   }
 
+  const checkAnswers = () => {
+    questions.forEach((question) => {
+      if (question.playerAnswerIndex > -1) {
+        if (question.correctIndex === question.playerAnswerIndex) {
+          setScore((prevScore) => prevScore + 1);
+        }
+      }
+    });
+    setGameOver(true);
+  };
+
+  const reset = () => {
+    setGameOver(false);
+    getQuestions();
+    setScore(0);
+  };
+
   useEffect(() => {
     getQuestions();
   }, []);
@@ -77,11 +97,20 @@ const QuestionPanel = () => {
             playerAnswer={question.playerAnswerIndex}
           />
         ))}
-      {questions.length === 0 ? (
-        <button disabled>Loading...</button>
-      ) : (
-        <button>Check answers</button>
-      )}
+      <div className="score-and-btn-panel">
+        {gameOver && (
+          <p className="score-text">
+            You scored {score}/{questions.length} correct answers
+          </p>
+        )}
+        {questions.length === 0 ? (
+          <button disabled>Loading...</button>
+        ) : (
+          <button onClick={!gameOver ? checkAnswers : reset}>
+            {!gameOver ? 'Check answers' : 'Play again'}
+          </button>
+        )}
+      </div>
     </div>
   );
 };

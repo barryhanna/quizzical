@@ -56,15 +56,12 @@ button {
   font-weight: 500;
   border-radius: 15px;
   border: none;
+  cursor: pointer;
 }
 
 .intro {
   height: 100%;
   margin: auto;
-}
-
-.intro button {
-  cursor: pointer;
 }
 
 .question {
@@ -121,4 +118,18 @@ button {
 
 .flow > * + * {
   margin-top: 1rem;
+}
+
+.score-and-btn-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.score-text {
+  font-family: 'Inter';
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--clr-blue-dark);
+  margin-right: 1rem;
 }

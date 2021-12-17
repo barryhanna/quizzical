@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import QuestionOption from './QuestionOption';
 
 const Question = ({ question, options, setAnswer, playerAnswer }) => {
