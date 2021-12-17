@@ -1,33 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import QuestionOption from './QuestionOption';
 
-const Question = ({ q: question, correct, wrong }) => {
-  const [selectedIndex, setSelectedIndex] = useState(-1);
-  const [options, setOptions] = useState([]);
-  const shuffleArray = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    }
-    return array;
-  };
-
-  useEffect(() => {
-    setOptions(shuffleArray([correct, ...wrong]));
-  }, []);
-
-  // console.log(`Question: ${question}`);
-  // console.log(`Correct: ${correct}`);
-  // console.log(`Wrong: ${wrong}`);
-
-  const toggleSelected = (e) => {
-    e.target.classList.toggle('selected');
-    const clickedIndex = parseInt(e.target.getAttribute('data-index'));
-    setSelectedIndex(clickedIndex);
-  };
-
+const Question = ({ question, options, setAnswer, playerAnswer }) => {
   return (
     <div className="question">
       <p
@@ -36,13 +10,13 @@ const Question = ({ q: question, correct, wrong }) => {
       />
       <div className="question--answer-options">
         {options.map((opt, i) => {
-          const isSelected = i === selectedIndex ? true : false;
           return (
             <QuestionOption
-              selected={isSelected}
+              selected={playerAnswer === i ? true : false}
+              key={i}
               optionText={opt}
               index={i}
-              onClick={toggleSelected}
+              onClick={() => setAnswer(i)}
             />
           );
         })}

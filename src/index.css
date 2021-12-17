@@ -85,6 +85,7 @@ button {
 
 .question--answer-options {
   display: flex;
+  justify-content: space-around;
   gap: 0.5em;
 }
 
