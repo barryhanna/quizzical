@@ -105,7 +105,7 @@ button {
   border: 1px solid var(--clr-answer-selected-bg);
 }
 
-.question--option.correct {
+.question--option.answered {
   background-color: var(--clr-answer-correct-bg);
   border: 1px solid var(--clr-answer-correct-bg);
 }

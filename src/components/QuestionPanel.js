@@ -99,6 +99,8 @@ const QuestionPanel = () => {
             options={question.options}
             setAnswer={setSelectedAnswerIndex.bind(i)}
             playerAnswer={question.playerAnswerIndex}
+            correct={question.correctIndex}
+            reveal={gameOver}
           />
         ))}
       <div className="score-and-btn-panel">
