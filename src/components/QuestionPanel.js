@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import Confetti from 'react-confetti';
+import { useWindowSize } from 'react-use';
 import Question from './Question';
 
 const QuestionPanel = () => {
   const [questions, setQuestions] = useState([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+
+  const { width, height } = useWindowSize();
 
   const getQuestions = async () => {
     const data = await fetch(
@@ -102,6 +106,11 @@ const QuestionPanel = () => {
           <p className="score-text">
             You scored {score}/{questions.length} correct answers
           </p>
+        )}
+        {gameOver && score === questions.length ? (
+          <Confetti width={width} height={height} />
+        ) : (
+          ''
         )}
         {questions.length === 0 ? (
           <button disabled>Loading...</button>
